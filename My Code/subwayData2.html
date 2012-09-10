@@ -1,0 +1,29 @@
+<!DOCTYPE html> <html>
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v2.js"></script>
+  <link rel="stylesheet" type="text/css" href="subwayData2.css">
+
+  <script>
+    function draw(data) {
+      "use strict";
+      d3.select("body")
+        .append("div")
+          .attr("class", "chart")
+        .selectAll(".bar")
+        .data(data.cash)
+        .enter()
+        .append("div")
+          .attr("class", "bar")
+          .style("width", function (d) {return d.count/100 + "px"})
+          .style("outline", "1px solid black")
+          .text(function(d) {return Math.round(d.count)});
+    }
+  </script>
+</head>
+<body>
+  <script>
+    d3.json("../mikedewar-getting_started_with_d3-bdfc34e/visualisations/data/plaza_traffic.json", draw);
+  </script>
+</body>
+</html>
